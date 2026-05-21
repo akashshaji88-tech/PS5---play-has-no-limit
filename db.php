@@ -74,7 +74,7 @@ try {
                 'release_date' => '2022-11-09',
                 'developer' => 'Santa Monica Studio',
                 'poster_path' => 'images/godofwar.jpg',
-                'video_path' => 'https://www.youtube.com/embed/g1wr0Duf5Eg',
+                'video_path' => 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
                 'is_exclusive' => 1
             ],
             [
@@ -87,7 +87,7 @@ try {
                 'release_date' => '2023-10-20',
                 'developer' => 'Insomniac Games',
                 'poster_path' => 'images/spiderman2.jpg',
-                'video_path' => 'https://www.youtube.com/embed/qDq2c6v2n1M',
+                'video_path' => 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
                 'is_exclusive' => 1
             ],
             [
@@ -100,7 +100,7 @@ try {
                 'release_date' => '2023-06-22',
                 'developer' => 'Creative Business Unit III (Square Enix)',
                 'poster_path' => 'images/finalfantasy16.jpg',
-                'video_path' => 'https://www.youtube.com/embed/mG6D1b8sNac',
+                'video_path' => 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
                 'is_exclusive' => 1
             ],
             [
@@ -113,7 +113,7 @@ try {
                 'release_date' => '2022-03-04',
                 'developer' => 'Polyphony Digital',
                 'poster_path' => 'images/granturismo7.jpg',
-                'video_path' => 'https://www.youtube.com/embed/oz-O74HS19Y',
+                'video_path' => 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
                 'is_exclusive' => 1
             ],
             [
@@ -126,7 +126,7 @@ try {
                 'release_date' => '2021-06-11',
                 'developer' => 'Insomniac Games',
                 'poster_path' => 'images/ratchetclank.jpg',
-                'video_path' => 'https://www.youtube.com/embed/9p_ggsFDOrY',
+                'video_path' => 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
                 'is_exclusive' => 1
             ],
             [
@@ -139,7 +139,7 @@ try {
                 'release_date' => '2021-04-30',
                 'developer' => 'Housemarque',
                 'poster_path' => 'images/returnal.jpg',
-                'video_path' => 'https://www.youtube.com/embed/K89lV4V2Zts',
+                'video_path' => 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
                 'is_exclusive' => 0
             ],
             [
@@ -152,7 +152,7 @@ try {
                 'release_date' => '2022-02-18',
                 'developer' => 'Guerrilla Games',
                 'poster_path' => 'images/horizon.jpg',
-                'video_path' => 'https://www.youtube.com/embed/Lq0fUa0_UqU',
+                'video_path' => 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
                 'is_exclusive' => 0
             ],
             [
@@ -165,7 +165,7 @@ try {
                 'release_date' => '2020-11-12',
                 'developer' => 'Bluepoint Games',
                 'poster_path' => 'images/demonsouls.jpg',
-                'video_path' => 'https://www.youtube.com/embed/2TMsVNu96s0',
+                'video_path' => 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
                 'is_exclusive' => 1
             ]
         ];

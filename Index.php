@@ -321,9 +321,7 @@ try {
         </button>
       </div>
       <div class="modal-frame" id="modalFrame">
-        <video id="modalVideo" controls playsinline style="width:100%;height:100%;">
-          <source src="" type="video/mp4"/>
-        </video>
+        <video id="modalVideo" controls playsinline style="width:100%;height:100%;"></video>
         <iframe id="modalIframe" style="width:100%;height:100%;border:none;display:none;" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
