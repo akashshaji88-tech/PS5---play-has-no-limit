@@ -20,7 +20,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 
 // Authentication check
 if (isset($_POST['password'])) {
-    if ($_POST['password'] === ADMIN_PASSWORD) {
+    if (trim($_POST['password']) === ADMIN_PASSWORD) {
         $_SESSION['admin_logged'] = true;
     } else {
         $login_error = "Access Denied: Invalid Admin Passcode.";

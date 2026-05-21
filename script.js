@@ -233,6 +233,8 @@
     if (!videoPath) return;
     modalTitle.textContent = title || 'Game Trailer';
     modalVideo.src = videoPath;
+    modalVideo.muted = false; // Explicitly ensure the video is not muted
+    modalVideo.volume = 1.0;  // Set volume to 100%
     modalVideo.load();
     modalVideo.play().catch(err => console.warn('Autoplay blocked:', err));
     modal.classList.add('open');
