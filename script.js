@@ -179,6 +179,7 @@
   const modal      = document.getElementById('modal');
   const modalVideo = document.getElementById('modalVideo');
   const modalIframe = document.getElementById('modalIframe');
+  const modalFrame  = document.getElementById('modalFrame');
   const modalTitle = document.getElementById('modalTitle');
   const modalClose = document.getElementById('modalClose');
 
@@ -234,6 +235,10 @@
     if (!videoPath) return;
     modalTitle.textContent = title || 'Game Trailer';
 
+    // Remove any existing unmute hints
+    const oldHint = modalFrame.querySelector('.modal-unmute-hint');
+    if (oldHint) oldHint.remove();
+
     if (videoPath.includes('youtube.com') || videoPath.includes('youtu.be') || videoPath.includes('/embed/')) {
       // Hide video player, show iframe
       modalVideo.style.display = 'none';
@@ -246,15 +251,28 @@
         embedUrl = videoPath.replace('watch?v=', 'embed/');
       }
       
-      // Add autoplay parameters
+      // Add autoplay parameters (mute=1 is MANDATORY for autoplay to be permitted by Chrome/modern browsers)
       if (!embedUrl.includes('?')) {
-        embedUrl += '?autoplay=1&mute=0';
+        embedUrl += '?autoplay=1&mute=1';
       } else {
         if (!embedUrl.includes('autoplay=')) embedUrl += '&autoplay=1';
-        if (!embedUrl.includes('mute=')) embedUrl += '&mute=0';
+        if (!embedUrl.includes('mute=')) embedUrl += '&mute=1';
       }
       
       modalIframe.src = embedUrl;
+
+      // Add a premium unmute floating badge that automatically fades away
+      const hint = document.createElement('div');
+      hint.className = 'modal-unmute-hint';
+      hint.innerHTML = '🔊 Click player to unmute trailer';
+      modalFrame.appendChild(hint);
+
+      setTimeout(() => {
+        hint.style.transition = 'opacity 0.8s ease';
+        hint.style.opacity = '0';
+        setTimeout(() => hint.remove(), 800);
+      }, 4500);
+
     } else {
       // Hide iframe, show video player
       modalIframe.style.display = 'none';
@@ -276,6 +294,11 @@
     modalVideo.pause();
     modalVideo.src = '';
     modalIframe.src = ''; // Clear iframe source to stop playback immediately
+
+    // Remove any active unmute hints
+    const hint = modalFrame.querySelector('.modal-unmute-hint');
+    if (hint) hint.remove();
+
     if (!drawer.classList.contains('open') && !orderModal.classList.contains('open') && !successModal.classList.contains('open')) {
       document.body.style.overflow = '';
     }
