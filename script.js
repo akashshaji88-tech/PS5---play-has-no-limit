@@ -178,6 +178,7 @@
   // Video Modal Elements
   const modal      = document.getElementById('modal');
   const modalVideo = document.getElementById('modalVideo');
+  const modalIframe = document.getElementById('modalIframe');
   const modalTitle = document.getElementById('modalTitle');
   const modalClose = document.getElementById('modalClose');
 
@@ -232,11 +233,40 @@
   function openModal(videoPath, title) {
     if (!videoPath) return;
     modalTitle.textContent = title || 'Game Trailer';
-    modalVideo.src = videoPath;
-    modalVideo.muted = false; // Explicitly ensure the video is not muted
-    modalVideo.volume = 1.0;  // Set volume to 100%
-    modalVideo.load();
-    modalVideo.play().catch(err => console.warn('Autoplay blocked:', err));
+
+    if (videoPath.includes('youtube.com') || videoPath.includes('youtu.be') || videoPath.includes('/embed/')) {
+      // Hide video player, show iframe
+      modalVideo.style.display = 'none';
+      modalVideo.pause();
+      modalIframe.style.display = 'block';
+
+      // Ensure it is formatted as an embed URL with autoplay enabled
+      let embedUrl = videoPath;
+      if (videoPath.includes('watch?v=')) {
+        embedUrl = videoPath.replace('watch?v=', 'embed/');
+      }
+      
+      // Add autoplay parameters
+      if (!embedUrl.includes('?')) {
+        embedUrl += '?autoplay=1&mute=0';
+      } else {
+        if (!embedUrl.includes('autoplay=')) embedUrl += '&autoplay=1';
+        if (!embedUrl.includes('mute=')) embedUrl += '&mute=0';
+      }
+      
+      modalIframe.src = embedUrl;
+    } else {
+      // Hide iframe, show video player
+      modalIframe.style.display = 'none';
+      modalIframe.src = '';
+      modalVideo.style.display = 'block';
+      modalVideo.src = videoPath;
+      modalVideo.muted = false; // Explicitly ensure the video is not muted
+      modalVideo.volume = 1.0;  // Set volume to 100%
+      modalVideo.load();
+      modalVideo.play().catch(err => console.warn('Autoplay blocked:', err));
+    }
+
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -245,6 +275,7 @@
     modal.classList.remove('open');
     modalVideo.pause();
     modalVideo.src = '';
+    modalIframe.src = ''; // Clear iframe source to stop playback immediately
     if (!drawer.classList.contains('open') && !orderModal.classList.contains('open') && !successModal.classList.contains('open')) {
       document.body.style.overflow = '';
     }
